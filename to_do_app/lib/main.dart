@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'to_do_list_screen.dart';
+import 'database.dart';
 
-void main() {
-  runApp(const MainApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseHelper.initDatabase();
+  runApp(const ToDoList());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class ToDoList extends StatelessWidget {
+  const ToDoList({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: ToDoScreen(),
     );
   }
 }
